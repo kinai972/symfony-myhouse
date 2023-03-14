@@ -1,0 +1,30 @@
+{% extends "base.html.twig" %}
+
+{% block main %}
+    {% include('components/_carousel.html.twig') %}
+
+    <div class="container marketing mt-5">
+        <div class="row">
+            <div class="col-lg-4 text-center">
+                <img class="bd-placeholder-img rounded-circle" src="{{ asset('images/rooms/room.jpg') }}" alt="chambre d'hôtel" width="140" height="140">
+                <h2 class="fw-normal">Chambres</h2>
+                <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
+                <p><a class="btn btn-secondary" href="{{ path('app_guest_room_index') }}">Découvrir les chambres &raquo;</a></p>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4 text-center">
+                <img class="bd-placeholder-img rounded-circle" src="{{ asset('images/restaurant/restaurant.jpg') }}" alt="chambre d'hôtel" width="140" height="140">
+                <h2 class="fw-normal">Restaurant</h2>
+                <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
+                <p><a class="btn btn-secondary" href="#">Voir la carte &raquo;</a></p>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4 text-center">
+                <img class="bd-placeholder-img rounded-circle" src="{{ asset('images/spa/spa.jpg') }}" alt="chambre d'hôtel" width="140" height="140">
+                <h2 class="fw-normal">Spa</h2>
+                <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
+                <p><a class="btn btn-secondary" href="#">Les soins &raquo;</a></p>
+            </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+    </div>
+
+    
+{% endblock %}

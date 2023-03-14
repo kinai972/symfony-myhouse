@@ -1,0 +1,19 @@
+vich_uploader:
+    db_driver: orm
+
+    metadata:
+        type: attribute
+        
+    mappings:
+        rooms:
+            uri_prefix: /images/rooms
+            upload_destination: '%kernel.project_dir%/public/images/rooms'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            delete_on_update: true
+            delete_on_remove: true
+        slider:
+            uri_prefix: /images/slider
+            upload_destination: '%kernel.project_dir%/public/images/slider'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            delete_on_update: true
+            delete_on_remove: true

@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block main %}
+    <div class="container mt-5">
+        <h1 class="text-center pt-4">Nos chambres</h1>
+        {% for room in rooms %}
+            <div class="row d-flex gap-2 justify-content-between align-items-center {% if loop.index is even %}flex-row-reverse{% endif %}">
+                <div class="col-7">
+                    <h2>{{ room.title }}</h2>
+                    <p>{{ room.shortDescription }}</p>
+                    <a href="" class="btn btn-primary">Découvrir</a>
+                </div>
+                <div class="col-4">
+                    <img src="{{ asset('images/rooms/') ~ room.image }}" alt="{{ room.title }}" class="img-fluid">
+                </div>
+            </div>
+            <hr class="my-5 py-2" />
+        {% endfor %}
+    </div>
+{% endblock %}

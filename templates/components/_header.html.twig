@@ -14,13 +14,13 @@
             <a class="nav-link" href="{{ path('app_guest_room_index') }}">Chambres</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Restaurant</a>
+            <a class="nav-link" href="{{ path('app_guest_guest_restaurant') }}">Restaurant</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Spa</a>
+            <a class="nav-link" href="{{ path('app_guest_guest_spa') }}">Spa</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Vos témoignages</a>
+            <a class="nav-link" href="{{ path('app_guest_guest_testimonials') }}">Vos témoignages</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ path('app_guest_guest_hotel') }}">L'Hôtel</a>
@@ -31,6 +31,20 @@
           <li class="nav-item">
             <a class="nav-link" href="#">En savoir plus</a>
           </li>
+          {% if is_granted('ROLE_ADMIN') %}
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-gears"></i> BackOffice
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ path('app_admin_admin_index') }}"><i class="fa-solid fa-user-group"></i> Administrateurs</a></li>
+                <li><a class="dropdown-item" href="{{ path('app_admin_room_index') }}"><i class="fa-solid fa-bed"></i> Chambres</a></li>
+                <li><a class="dropdown-item" href="{{ path('app_admin_booking_index') }}"><i class="fa-solid fa-money-check"></i> Commandes</a></li>
+                <li><a class="dropdown-item" href="{{ path('app_admin_slider_index') }}"><i class="fa-regular fa-images"></i> Slider</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a></li>
+          {% endif %}
         </ul>
       </div>
     </div>

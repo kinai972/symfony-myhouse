@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block main %}
+    <div class="container mt-5 pt-4">
+        <h1 class="text-center mb-3">{{ title }}</h1>
+        <img src="{{ asset('images/rooms/') ~ room.image }}" class="img-fluid my-4 w-100" alt="{{ room.title }}">
+        <div class="row">
+            <h2>Équipement et informations</h2>
+
+            <p>{{ room.shortDescription }}</p>
+            <p>{{ room.longDescription }}</p>
+        </div>
+
+        <hr class="my-4" />
+
+        {{ form_start(form, {'attr': {'class': class|default('')}}) }}
+            <h2 class="mt-4 mb-2">Période de séjour</h2>
+            <div class="row">
+                <div class="col-md-6">{{ form_row(form.startsAt) }}</div>
+                <div class="col-md-6">{{ form_row(form.endsAt) }}</div>
+            </div>
+
+            <h2 class="mt-4 mb-2">Saisissez vos coordonnées</h2>
+            {{ form_rest(form) }}
+
+            <button class="btn btn-primary">Réserver</button>
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}

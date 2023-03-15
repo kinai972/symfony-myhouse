@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block main %}
+    <div class="container mt-5 pt-4">
+        <h1 class="text-center mb-3">{{ title }}</h1>
+        <div class="row justify-content-around">
+            <div class="card col-md-3">
+                <div class="card-body">
+                    <h5 class="card-title">Alexandre</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Le 12/02/2021 à 15 h 03</h6>
+                    <p class="card-text">
+                        <i class="fa-solid fa-quote-left"></i>
+                        Some quick example text to build on the card title and make up the bulk of the card's content.
+                        <i class="fa-solid fa-quote-right"></i>
+                    </p>
+                </div>
+            </div>
+            <div class="card col-md-3">
+                <div class="card-body">
+                    <h5 class="card-title">Sandrine</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Le 22/11/2021 à 23 h 29</h6>
+                    <p class="card-text">
+                        <i class="fa-solid fa-quote-left"></i>
+                        Some quick example text to build on the card title and make up the bulk of the card's content.
+                        <i class="fa-solid fa-quote-right"></i>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+{% endblock %}

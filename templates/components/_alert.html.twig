@@ -1,0 +1,3 @@
+{% for message in app.flashes('success') %}
+    <p class="text-center alert alert-success">{{ message }}</p>
+{% endfor %}

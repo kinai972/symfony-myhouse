@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block main %}
+    <div class="container mt-5 pt-4">
+        <h1 class="text-center mb-3">{{ title }}</h1>
+        <img src="{{ asset('images/spa/spa.jpg') }}" class="img-fluid my-4 w-100" alt="restaurant HotelHouse">
+        
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam itaque nemo explicabo ipsa vero est totam saepe maiores praesentium dolor omnis quod, aut iste? Reprehenderit eos deserunt voluptates cum blanditiis!
+        Qui ab id ea sunt odit nobis facere corrupti deserunt facilis, natus repudiandae officiis dolorum! Culpa alias voluptate facere rerum soluta. Ipsam dignissimos nobis doloremque ab, quasi commodi possimus cum.
+        Animi corrupti pariatur repellendus sunt at cupiditate maxime ducimus earum, tempora mollitia laboriosam consequuntur nisi magnam aspernatur sapiente quibusdam modi vel dolore ipsum fuga inventore error? Cumque alias dolores voluptatem.</p>
+        
+        <h2 class="text-center mb-3">Soins proposés</h2>
+        
+        <div class="row justify-content-around">
+            <div class="card col-md-3">
+                <a href="{{ asset('images/spa/spa_massage.jpg') }}" target="_blank">
+                    <img src="{{ asset('images/spa/spa_massage.jpg') }}"
+                        class="card-img-top"
+                        alt="carte du restaurant HotelHouse">
+                </a>
+                <div class="card-body">
+                    <h3 class="card-title">Massages</h3>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+            <div class="card col-md-3">
+                <a href="{{ asset('images/spa/spa_soins.jpg') }}" target="_blank">
+                    <img src="{{ asset('images/spa/spa_soins.jpg') }}"
+                        class="card-img-top"
+                        alt="carte du restaurant HotelHouse">
+                </a>
+
+                <div class="card-body">
+                    <h3 class="card-title">Soins visage</h3>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+            <div class="card col-md-3">
+                <a href="{{ asset('images/spa/spa_bain.jpg') }}" target="_blank">
+                    <img src="{{ asset('images/spa/spa_bain.jpg') }}"
+                        class="card-img-top"
+                        alt="carte du restaurant HotelHouse">
+                </a>
+                <div class="card-body">
+                    <h3 class="card-title">Bains</h3>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,8 +1,10 @@
 <div id="carouselExampleCaptions" class="carousel slide">
   <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    {% set count = 0 %}
+      {% for image in images %}
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{ count }}" aria-current="true" {% if loop.first %}class="active" aria-label="Slide 1"{% endif %}></button>
+      {% set count = count + 1 %}
+    {% endfor %}
   </div>
   <div class="carousel-inner">
     {% for image in images %}
@@ -10,7 +12,7 @@
             <img src="{{ asset('images/slider/') ~ image.image }}" class="d-block w-100" alt="Photo de l'hôtel HotelHouse">
             <div class="carousel-caption d-none d-md-block">
                 <h5>HotelHouse</h5>
-                <p><a class="btn btn-primary" href="#">Découvrez nos chambres</a></p>
+                <p><a class="btn btn-primary" href="{{ path('app_guest_room_index') }}">Découvrez nos chambres</a></p>
             </div>
         </div>
     {% endfor %} 

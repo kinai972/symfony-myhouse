@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BACKOFFICE | Gestion du slider{% endblock %}
+
+{% block main %}
+    <div class="container mt-5">
+        <h1 class="text-center pt-4 mb-4">BACKOFFICE | Gestion du slider</h1>
+
+        {% include "components/_alert.html.twig" %}
+
+        <div class="row justify-content-between">
+            <a href="{{ path('app_admin_slider_create') }}" class="btn btn-primary col-md-2 mb-4"><i class="fa-solid fa-circle-plus"></i> Ajouter une image</a>
+            <a href="{{ path('app_admin_slider_order') }}" class="btn btn-success col-md-2 mb-4"><i class="fa-solid fa-shuffle"></i> Modifier ordre</a>
+        </div>
+        
+        <table class="table table-bordered table-striped text-center">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Ordre</th>
+                    <th>Image</th>
+                    <th>Date d'enregistrement</th>
+                    <th colspan="2">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for image in images %}
+                <tr>
+                    <td>{{ image.id }}</td>
+                    <td>{{ image.place }}</td>
+                    <td><img src="{{ asset('images/slider/') ~ image.image }}" alt="hotel Househotel"></td>
+                    <td>{{ image.registeredAt|date('d/m/Y à H:i:s') }}</td>
+                    <td>
+                        <a href="{{ path('app_admin_slider_update', {'id': image.id}) }}" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
+                    </td>
+                    <td>
+                        {{ include('components/_delete_form.html.twig', {
+                            route: "app_admin_slider_delete",
+                            name: "cette image du slider",
+                            data: image
+                        }) }}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

@@ -19,6 +19,30 @@ class GuestController extends AbstractController
         ]);
     }
 
+    #[Route('/restaurant', name: 'restaurant')]
+    public function restaurant(): Response
+    {
+        return $this->render(view: 'guest/guest/restaurant.html.twig', parameters: [
+            'title' => "À propos de notre restaurant",
+        ]);
+    }
+
+    #[Route('/spa', name: 'spa')]
+    public function spa(): Response
+    {
+        return $this->render(view: 'guest/guest/spa.html.twig', parameters: [
+            'title' => "À propos de notre spa",
+        ]);
+    }
+
+    #[Route('/temoignages', name: 'testimonials')]
+    public function testimonials(): Response
+    {
+        return $this->render(view: 'guest/guest/testimonials.html.twig', parameters: [
+            'title' => "Vos témoignages",
+        ]);
+    }
+
     #[Route('/hotel', name: 'hotel')]
     public function hotel(): Response
     {

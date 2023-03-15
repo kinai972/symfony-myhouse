@@ -19,6 +19,11 @@ class BookingFixtures extends Fixture implements DependentFixtureInterface
             /** @var Room */
             $room = $this->getReference(['classic', 'comfort', 'suite'][mt_rand(0, 2)] . '_room');
 
+            $phoneNumber = '0';
+            for ($a = 0; $a < 9; $a++) {
+                $phoneNumber .= mt_rand(0, 9);
+            }
+
             $booking = (new Booking())
                 ->setRoom($room)
                 ->setRoomReference($room->getId() . ' - ' . $room->getTitle())
@@ -31,7 +36,7 @@ class BookingFixtures extends Fixture implements DependentFixtureInterface
                 ->setEmail($faker->email())
                 ->setFirstName($faker->firstName())
                 ->setLastName($faker->lastName())
-                ->setPhoneNumber($faker->phoneNumber());
+                ->setPhoneNumber($faker->regexify('/^0\d{9}$/'));
 
             $bookingDuration =
                 $booking

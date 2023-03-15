@@ -5,34 +5,79 @@ namespace App\Entity;
 use App\Repository\BookingRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: BookingRepository::class)]
 class Booking
 {
+    const STARTED_AT = [
+        'default' => '2022-01-01 08:00:00',
+        'fr' => '1er janvier 2022',
+    ];
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message: "La date de début de la réservation est obligatoire.")]
+    #[Assert\GreaterThanOrEqual(
+        value: self::STARTED_AT['default'],
+        message: "Veuillez choisir une date de départ postérieure au " . self::STARTED_AT['fr'] . ".",
+        groups: ['admin']
+    )]
+    #[Assert\GreaterThanOrEqual(
+        value: '+1 day',
+        message: "Veuillez choisir une date de départ postérieure d'au moins 24 heures.",
+        groups: ['guest']
+    )]
     private ?\DateTimeImmutable $startsAt = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message: "La date de fin de la réservation est obligatoire.")]
+    #[Assert\GreaterThan(
+        propertyPath: 'startsAt',
+        message: "La date de fin de la réservation doivent être postérieures à la date de départ."
+    )]
+    #[Assert\LessThanOrEqual(
+        value: '+4 years',
+        message: "Les réservations sont ouvertes seulement 4 ans à l'avance.",
+    )]
     private ?\DateTimeImmutable $endsAt = null;
 
     #[ORM\Column]
     private ?float $total = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 100)]
+    #[Assert\NotBlank(message: "Le prénom est obligatoire.")]
+    #[Assert\Length(
+        min: 2,
+        minMessage: "Le prénom doit contenir {{ limit }} caractères minimum.",
+        max: 100,
+        maxMessage: "Le prénom doit contenir {{ limit }} caractères maximum."
+    )]
     private ?string $firstName = null;
 
-    #[ORM\Column(length: 150)]
+    #[ORM\Column(length: 200)]
+    #[Assert\NotBlank(message: "Le prénom est obligatoire.")]
+    #[Assert\Length(
+        min: 2,
+        minMessage: "Le nom doit contenir {{ limit }} caractères minimum.",
+        max: 200,
+        maxMessage: "Le nom doit contenir {{ limit }} caractères maximum."
+    )]
     private ?string $lastName = null;
 
     #[ORM\Column(length: 30)]
+    #[Assert\Regex(
+        pattern: '/^0\d{9}$/',
+        message: 'Le numéro de téléphone ne doit pas contenir de caractères spéciaux et doit être sans espace : 0601020304'
+    )]
     private ?string $phoneNumber = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\Email(message: "Veuillez saisir une adresse électronique valide.")]
     private ?string $email = null;
 
     #[Gedmo\Timestampable(on: "create")]
@@ -40,6 +85,7 @@ class Booking
     private ?\DateTimeImmutable $registeredAt = null;
 
     #[ORM\ManyToOne(inversedBy: 'bookings')]
+    #[ORM\JoinColumn(onDelete: 'SET NULL')]
     private ?Room $room = null;
 
     #[ORM\Column(length: 255)]

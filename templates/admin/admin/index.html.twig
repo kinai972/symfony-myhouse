@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BACKOFFICE | Gestion des administrateurs{% endblock %}
+
+{% block main %}
+    <div class="container mt-5">
+        <h1 class="text-center pt-4 mb-4">BACKOFFICE | Gestion des administrateurs</h1>
+
+        {% include "components/_alert.html.twig" %}
+
+        {% if is_granted('ROLE_SUPER_ADMIN') %}
+            <a href="{{ path('app_admin_admin_create') }}" class="btn btn-primary mb-4"><i class="fa-solid fa-circle-plus"></i> Ajouter un administrateur</a>
+        {% endif %}
+
+        <table class="table table-bordered table-striped text-center">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Pseudo</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Adresse électronique</th>
+                    <th>Civilité</th>
+                    <th>Statut</th>
+                    <th>Date d'enregistrement</th>
+                    <th colspan="2">actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for admin in admins %}
+                <tr>
+                    <td>{{ admin.id }}</td>
+                    <td>{{ admin.username }}</td>
+                    <td>{{ admin.lastName }}</td>
+                    <td>{{ admin.firstName }}</td>
+                    <td>{{ admin.email }}</td>
+                    <td>{{ admin.gender == 'm' ? 'Homme' : 'Femme' }}</td>
+                    <td>
+                        {% if 'ROLE_SUPER_ADMIN' in admin.roles %}
+                            <span class="badge text-bg-primary">Superadmin</span>
+                        {% else %}
+                            <span class="badge text-bg-success">Admin</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ admin.registeredAt|date('d/m/Y à H:i:s') }}</td>
+                    {% if is_granted('ROLE_SUPER_ADMIN') or app.user.id == admin.id %}
+                        <td>
+                            <a href="{{ path('app_admin_admin_update', {'id': admin.id}) }}" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
+                        </td>
+                        <td>
+                            {{ include('components/_delete_form.html.twig', {
+                                route: "app_admin_admin_delete",
+                                name: "cet administrateur",
+                                data: admin
+                            }) }}
+                        </td>
+                    {% else %}
+                        <td>-</td>
+                        <td>-</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

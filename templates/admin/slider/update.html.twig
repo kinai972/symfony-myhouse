@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block main %}
+    <div class="container mt-5 pt-4">
+        <h1 class="text-center mb-3">BACKOFFICE | Modifier une image pour le slider</h1>
+        {{ include('components/_form.html.twig', {button_label: "Modifier"}) }}
+    </div>
+
+{% endblock %}

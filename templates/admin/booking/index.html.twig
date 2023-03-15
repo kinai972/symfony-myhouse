@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BACKOFFICE | Gestion des commandes{% endblock %}
+
+{% block main %}
+    <div class="container mt-5">
+        <h1 class="text-center pt-4 mb-4">BACKOFFICE | Gestion des commandes</h1>
+
+        {% include "components/_alert.html.twig" %}
+
+        <a href="{{ path('app_admin_booking_create') }}" class="btn btn-primary mb-4"><i class="fa-solid fa-circle-plus"></i> Créer une commande</a>
+        
+        <table class="table table-bordered table-striped text-center">
+            <thead>
+                <tr>
+                    <th>Commande</th>
+                    <th>Chambre</th>
+                    <th>Date d'arrivée</th>
+                    <th>Date de départ</th>
+                    <th>Prix total</th>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Téléphone</th>
+                    <th>Adresse électronique</th>
+                    <th>Date d'enregistrement</th>
+                    <th colspan="2">actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for booking in bookings %}
+                <tr>
+                    <td>{{ booking.id }}</td>
+                    <td>{{ booking.roomReference }}</td>
+                    <td>{{ booking.startsAt|date('d/m/Y') }}</td>
+                    <td>{{ booking.endsAt|date('d/m/Y') }}</td>
+                    <td class="text-nowrap">{{ booking.total|number_format(2, ',', ' ') }} €</td>
+                    <td>{{ booking.firstName }}</td>
+                    <td>{{ booking.lastName }}</td>
+                    <td class="text-nowrap">{{ booking.phoneNumber }}</td>
+                    <td>{{ booking.email }}</td>
+                    <td>{{ booking.registeredAt|date('d/m/Y à H:i:s') }}</td>
+                    <td>
+                        <a href="{{ path('app_admin_booking_update', {'id': booking.id}) }}" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
+                    </td>
+                    <td>
+                        {{ include('components/_delete_form.html.twig', {
+                            route: "app_admin_booking_delete",
+                            name: "cette commande",
+                            data: booking
+                        }) }}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+
+{% block main %}
+    <div class="container mt-5">
+        <h1 class="text-center pt-4 mb-4">BACKOFFICE | Modifier l'odre des images du slider</h1>
+
+        <p class="alert"></p>
+
+        <form action="{{ path('app_admin_slider_order') }}" method="post" id="formSteps" class="mb-3">
+            <button type="submit" class="btn btn-primary">Mettre à jour</button>
+        </form>
+        <div id="dragging-drop" class="row gap-3">
+            {% for image in images %}
+                <div class="card img-slider" style="width: 18rem;" data-id="{{ image.id }}" data-place="{{ image.place }}">
+                    <img src="{{ asset('images/slider/' ~ image.image) }}" class="card-img-top" alt="photo HotelHouse">
+                    <div class="card-body">
+                        <p class="card-text">Ordre : #{{ image.place }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script src="/js/admin.js"></script>
+{% endblock javascripts %}

@@ -22,8 +22,8 @@ class AdminFixtures extends Fixture
 
         $superAdmin = new Admin();
         $superAdmin
-            ->setUsername($faker->userName())
-            ->setEmail('super_admin@mail.com')
+            ->setUsername($faker->regexify('/^[a-zA-Z0-9_-]{6,15}$/'))
+            ->setEmail('superadmin@mail.com')
             ->setPassword($this->hasher->hashPassword(user: $superAdmin, plainPassword: 'Password123!'))
             ->setLastName($faker->lastName())
             ->setFirstName($faker->firstName())
@@ -35,7 +35,7 @@ class AdminFixtures extends Fixture
         for ($i = 2; $i <= 3; $i++) {
             $admin = new Admin();
             $admin
-                ->setUsername($faker->userName())
+                ->setUsername($faker->regexify('/^[a-zA-Z0-9_-]{6,15}$/'))
                 ->setEmail($faker->email())
                 ->setPassword($this->hasher->hashPassword(user: $admin, plainPassword: 'Password123!'))
                 ->setLastName($faker->lastName())

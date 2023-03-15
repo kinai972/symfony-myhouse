@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BACKOFFICE | Gestion des chambres{% endblock %}
+
+{% block main %}
+    <div class="container mt-5">
+        <h1 class="text-center pt-4 mb-4">BACKOFFICE | Gestion des chambres</h1>
+
+        {% include "components/_alert.html.twig" %}
+
+        <a href="{{ path('app_admin_room_create') }}" class="btn btn-primary mb-4"><i class="fa-solid fa-circle-plus"></i> Ajouter une chambre</a>
+        
+        <table class="table table-bordered table-striped text-center">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Titre</th>
+                    <th>Image</th>
+                    <th>Description courte</th>
+                    <th>Description longue</th>
+                    <th>Prix nuitée</th>
+                    <th>Date d'enregistrement</th>
+                    <th colspan="2">actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for room in rooms %}
+                <tr>
+                    <td>{{ room.id }}</td>
+                    <td>{{ room.title }}</td>
+                    <td><img src="{{ asset('images/rooms/') ~ room.image }}" alt="{{ room.title }}"></td>
+                    <td>{{ room.shortDescription }}</td>
+                    <td>{{ room.longDescription }}</td>
+                    <td class="text-nowrap">{{ room.night|number_format(2, ',', ' ') }} €</td>
+                    <td>{{ room.registeredAt|date('d/m/Y à H:i:s') }}</td>
+                    <td>
+                        <a href="{{ path('app_admin_room_update', {'id': room.id}) }}" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
+                    </td>
+                    <td>
+                        {{ include('components/_delete_form.html.twig', {
+                            route: "app_admin_room_delete",
+                            name: "cette chambre",
+                            data: room
+                        }) }}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

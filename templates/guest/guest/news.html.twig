@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block main %}
+    <div class="container mt-5">
+        <h1 class="text-center pt-4">Les actualités dans le secteur Hôtelier</h1>
+        {% for i in 1..7 %}
+            <div class="row d-flex gap-2 justify-content-between align-items-center {% if loop.index is even %}flex-row-reverse{% endif %}">
+                <div class="col-7">
+                    <h2>L'actu Lorem ipsum dolor sit amet consectetur.</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemo aut dolorum perspiciatis ex quae repellendus mollitia earum fugiat, corrupti, placeat, optio quaerat tenetur iusto sint cumque ad laudantium a autem.
+                    Placeat nihil architecto sequi aut minima laborum ea nemo consequatur animi, iure ratione ut optio libero minus commodi veniam amet tempore maiores error itaque recusandae. Odio omnis repellendus nihil animi!</p>
+                    <p style="font-size: 24px">
+                        <i class="fa-solid fa-share"></i> Partagez sur vos réseaux : 
+                        <a class="link-dark mx-2" href="#" style="font-size: 32px"><i class="fa-brands fa-twitter"></i></a>
+                        <a class="link-dark mx-2" href="#" style="font-size: 32px"><i class="fa-brands fa-instagram"></i></a>
+                        <a class="link-dark mx-2" href="#" style="font-size: 32px"><i class="fa-brands fa-facebook"></i></a>
+                    </p>
+                </div>
+                <div class="col-4">
+                    <img src="{{ asset('images/hotel/news-') ~ i ~ '.jpg' }}" alt="Actualités hôtelières" class="img-fluid">
+                </div>
+            </div>
+            <hr class="my-5 py-2" />
+        {% endfor %}
+    </div>
+{% endblock %}

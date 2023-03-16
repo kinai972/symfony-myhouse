@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block main %}
+    <div class="container my-5">
+        <h1 class="my-5 pt-3 text-center">Plan du site</h1>
+        <img src="{{ asset('images/hotel/plan.jpg') }}" alt="plan du site" class="img-fluid d-block mx-auto mb-4">
+        <div class="row justify-content-center gap-2">
+            <div class="col-sm-1">
+                <a href="#" class="btn btn-primary"><i class="fa-solid fa-note-sticky"></i> Imprimer</a>
+            </div>
+            <div class="col-sm-1">
+                <a href="#" class="btn btn-success"><i class="fa-solid fa-download"></i> Télécharger</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

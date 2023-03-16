@@ -8,6 +8,7 @@
         <img src="{{ asset('images/rooms/') ~ room.image }}" class="img-fluid my-4 w-100" alt="{{ room.title }}">
         <div class="row">
             <h2>Équipement et informations</h2>
+            <strong>{{ room.night|number_format(2, ',', ' ') }} € / nuit</strong>
 
             <p>{{ room.shortDescription }}</p>
             <p>{{ room.longDescription }}</p>

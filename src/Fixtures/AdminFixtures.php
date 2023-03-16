@@ -22,7 +22,7 @@ class AdminFixtures extends Fixture
 
         $superAdmin = new Admin();
         $superAdmin
-            ->setUsername($faker->regexify('/^[a-zA-Z0-9_-]{6,15}$/'))
+            ->setUsername($faker->word() . mt_rand(1000, 9999))
             ->setEmail('superadmin@mail.com')
             ->setPassword($this->hasher->hashPassword(user: $superAdmin, plainPassword: 'Password123!'))
             ->setLastName($faker->lastName())
@@ -32,10 +32,22 @@ class AdminFixtures extends Fixture
 
         $manager->persist($superAdmin);
 
-        for ($i = 2; $i <= 3; $i++) {
+        $admin = new Admin();
+        $admin
+            ->setUsername($faker->word() . mt_rand(1000, 9999))
+            ->setEmail('admin@mail.com')
+            ->setPassword($this->hasher->hashPassword(user: $admin, plainPassword: 'Password123!'))
+            ->setLastName($faker->lastName())
+            ->setFirstName($faker->firstName())
+            ->setGender(['m', 'f'][mt_rand(0, 1)])
+            ->setRoles(['ROLE_ADMIN']);
+
+        $manager->persist($admin);
+
+        for ($i = 3; $i <= 5; $i++) {
             $admin = new Admin();
             $admin
-                ->setUsername($faker->regexify('/^[a-zA-Z0-9_-]{6,15}$/'))
+                ->setUsername($faker->word() . mt_rand(1000, 9999))
                 ->setEmail($faker->email())
                 ->setPassword($this->hasher->hashPassword(user: $admin, plainPassword: 'Password123!'))
                 ->setLastName($faker->lastName())

@@ -8,29 +8,46 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{ path('app_guest_guest_home') }}">Accueil</a>
+            <a class="nav-link" aria-current="page" href="{{ path('app_guest_guest_home') }}"><i class="fa-solid fa-house"></i> Accueil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ path('app_guest_room_index') }}">Chambres</a>
+            <a class="nav-link" href="{{ path('app_guest_room_index') }}"><i class="fa-solid fa-bed"></i> Chambres</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ path('app_guest_guest_restaurant') }}">Restaurant</a>
+            <a class="nav-link" href="{{ path('app_guest_guest_restaurant') }}"><i class="fa-solid fa-utensils"></i> Restaurant</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ path('app_guest_guest_spa') }}">Spa</a>
+            <a class="nav-link" href="{{ path('app_guest_guest_spa') }}"><i class="fa-solid fa-spa"></i> Spa</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ path('app_guest_guest_testimonials') }}">Vos témoignages</a>
+            <a class="nav-link" href="{{ path('app_guest_guest_testimonials') }}"><i class="fa-solid fa-comments"></i> Vos témoignages</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ path('app_guest_guest_hotel') }}">L'Hôtel</a>
+            <a class="nav-link" href="{{ path('app_guest_guest_hotel') }}"><i class="fa-solid fa-hotel"></i> L'Hôtel</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Actualités</a>
+            <a class="nav-link" href="{{ path('app_guest_guest_news') }}"><i class="fa-solid fa-newspaper"></i> Actualités</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">En savoir plus</a>
-          </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-circle-info"></i> En savoir plus
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ path('app_guest_guest_legalNotice') }}"><i class="fa-solid fa-file-circle-exclamation"></i> Mentions légales</a></li>
+                <li><a class="dropdown-item" href="{{ path('app_guest_guest_termsAndConditions') }}"><i class="fa-solid fa-scroll"></i> Conditions générales</a></li>
+                <li><a class="dropdown-item" href="{{ path('app_guest_guest_plan') }}"><i class="fa-solid fa-map"></i> Plan du site</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-earth-europe"></i> Langues
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-language"></i> Français</a></li>
+                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-language"></i> English</a></li>
+                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-language"></i> Español</a></li>
+              </ul>
+            </li>
           {% if is_granted('ROLE_ADMIN') %}
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

@@ -6,7 +6,7 @@
     <div class="container marketing mt-5">
         {% include "components/_alert.html.twig" %}
         
-        <div class="row">
+        <div class="row my-5">
             <div class="col-lg-4 text-center">
                 <img class="bd-placeholder-img rounded-circle" src="{{ asset('images/rooms/room.jpg') }}" alt="chambre d'hôtel" width="140" height="140">
                 <h2 class="fw-normal">Chambres</h2>
@@ -17,15 +17,75 @@
                 <img class="bd-placeholder-img rounded-circle" src="{{ asset('images/restaurant/restaurant.jpg') }}" alt="chambre d'hôtel" width="140" height="140">
                 <h2 class="fw-normal">Restaurant</h2>
                 <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
-                <p><a class="btn btn-secondary" href="#">Voir la carte &raquo;</a></p>
+                <p><a class="btn btn-secondary" href="{{ path('app_guest_guest_restaurant') }}">Voir la carte &raquo;</a></p>
             </div><!-- /.col-lg-4 -->
             <div class="col-lg-4 text-center">
                 <img class="bd-placeholder-img rounded-circle" src="{{ asset('images/spa/spa.jpg') }}" alt="chambre d'hôtel" width="140" height="140">
                 <h2 class="fw-normal">Spa</h2>
                 <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
-                <p><a class="btn btn-secondary" href="#">Les soins &raquo;</a></p>
+                <p><a class="btn btn-secondary" href="{{ path('app_guest_guest_spa') }}">Les soins &raquo;</a></p>
             </div><!-- /.col-lg-4 -->
         </div><!-- /.row -->
+
+        <!-- START THE FEATURETTES -->
+
+        {% for i in 1..3 %}
+            <div class="row d-flex gap-2 justify-content-between align-items-center {% if loop.index is even %}flex-row-reverse{% endif %}">
+                <div class="col-7">
+                    <h2>L'actu Lorem ipsum dolor sit amet consectetur.</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemo aut dolorum perspiciatis ex quae repellendus mollitia earum fugiat, corrupti, placeat, optio quaerat tenetur iusto sint cumque ad laudantium a autem.
+                    Placeat nihil architecto sequi aut minima laborum ea nemo consequatur animi, iure ratione ut optio libero minus commodi veniam amet tempore maiores error itaque recusandae. Odio omnis repellendus nihil animi!</p>
+                    <p style="font-size: 24px">
+                        <i class="fa-solid fa-share"></i> Partagez sur vos réseaux : 
+                        <a class="link-dark mx-2" href="#" style="font-size: 32px"><i class="fa-brands fa-twitter"></i></a>
+                        <a class="link-dark mx-2" href="#" style="font-size: 32px"><i class="fa-brands fa-instagram"></i></a>
+                        <a class="link-dark mx-2" href="#" style="font-size: 32px"><i class="fa-brands fa-facebook"></i></a>
+                    </p>
+                </div>
+                <div class="col-4">
+                    <img src="{{ asset('images/hotel/news-') ~ i ~ '.jpg' }}" alt="Actualités hôtelières" class="img-fluid">
+                </div>
+            </div>
+            <hr class="my-5 py-2" />
+        {% endfor %}
+
+        {# <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading fw-normal lh-1">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
+                <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
+            </div>
+            <div class="col-md-5">
+                <img src="{{ asset('images/restaurant/restaurant.jpg') }}" alt="" class="img-fluid">
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7 order-md-2">
+                <h2 class="featurette-heading fw-normal lh-1">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
+                <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how this layout would work with some actual real-world content in place.</p>
+            </div>
+            <div class="col-md-5 order-md-1">
+                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading fw-normal lh-1">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+                <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.</p>
+            </div>
+            <div class="col-md-5">
+                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+            </div>
+        </div>
+
+        <hr class="featurette-divider"> #}
+
+        <!-- /END THE FEATURETTES -->
     </div>
 
     

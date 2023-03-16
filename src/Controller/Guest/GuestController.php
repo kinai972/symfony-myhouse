@@ -50,4 +50,36 @@ class GuestController extends AbstractController
             'title' => "À propos de notre hôtel",
         ]);
     }
+
+    #[Route('/actualites', name: 'news')]
+    public function news(): Response
+    {
+        return $this->render(view: 'guest/guest/news.html.twig', parameters: [
+            'title' => "Les actualités du secteur hôtelier",
+        ]);
+    }
+
+    #[Route('/mentions-legales', name: 'legalNotice')]
+    public function legalNotice(): Response
+    {
+        return $this->render(view: 'guest/guest/legal_notice.html.twig', parameters: [
+            'title' => "Les mentions légales",
+        ]);
+    }
+
+    #[Route('/conditions-générales', name: 'termsAndConditions')]
+    public function termsAndConditions(): Response
+    {
+        return $this->render(view: 'guest/guest/terms_and_conditions.html.twig', parameters: [
+            'title' => "Conditions générales",
+        ]);
+    }
+
+    #[Route('/plan-du-site', name: 'plan')]
+    public function plan(): Response
+    {
+        return $this->render(view: 'guest/guest/plan.html.twig', parameters: [
+            'title' => "Plan du site",
+        ]);
+    }
 }
